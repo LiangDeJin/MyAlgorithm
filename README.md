@@ -1,1 +1,1 @@
-# MyAlgorithm
+# myAlgorithm
