@@ -55,7 +55,51 @@
    };
    
    方法二：
+   /**
+    * @param {number[][]} matrix
+    * @param {number} target
+    * @return {boolean}
+    */
+   var searchMatrix = function(matrix, target) {
+       
+       // 起始行
+       let row_start = 0;
+       // 结束行
+       let row_end = matrix.length - 1;
+       
+       while(row_start < row_end){
+           // 中间行
+           let mid = row_start + (row_end - row_start)/2;
+           
+           if(matrix[mid][0] == target){
+              return true;
+           }else if(matrix[mid][0] > target){
+              row_end = mid;
+           }else if(matrix[mid][0] < target){
+              row_start = mid + 1;
+           }
+       }
+       // 可能在哪行
+       let link = row_start - 1;
+       if(link <= 0){
+           return false;   
+       }
+       
+       let col_start = 0;
+       let col_end = matrix[0].length - 1;
+       while(col_start < col_end){
+           // 中间列
+           let mid = col_start + (col_end - col_start)/2;
+           
+           if(matrix[link][mid] == target){
+              return true;
+           }else if(matrix[link][mid] > target){
+              col_end = mid;
+           }else if(matrix[link][mid] < target){
+              col_start = mid + 1;
+           }
+       }
    
-   
-   
+       return false;
+   };
 ```
